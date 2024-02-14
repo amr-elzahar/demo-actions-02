@@ -1,0 +1,13 @@
+name: Deployment Workflow
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  Testing:
+    name: Testing Application
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Testing code
+        run: npm run test
