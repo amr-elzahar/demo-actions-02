@@ -16,3 +16,21 @@ jobs:
         run: npm install
       - name: Run Test
         run: npm test
+  Building:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+      - name: Install Node JS
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+      - name: Install Dependencies
+        run: npm install
+      - name: Run Build
+        run: npm run build
+  Deploying:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy Code
+        run: echo "Deploying..."
