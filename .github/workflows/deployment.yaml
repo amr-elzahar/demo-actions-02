@@ -1,6 +1,6 @@
 name: Deployment Workflow
 on:
-  #   push:
+  push:
   workflow_dispatch:
 jobs:
   Testing:
@@ -30,6 +30,11 @@ jobs:
         run: npm install
       - name: Run Build
         run: npm run build
+      - name: Upload Artificat
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files
+          path: dist
   Deploying:
     needs: Building
     runs-on: ubuntu-latest
