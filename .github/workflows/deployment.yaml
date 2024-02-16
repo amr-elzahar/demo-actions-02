@@ -1,6 +1,8 @@
 name: Deployment Workflow
 on:
   push:
+    branches:
+      - main
   workflow_dispatch:
 jobs:
   Testing:
@@ -44,6 +46,6 @@ jobs:
         with:
           name: dist-files
       - name: Output Artifact Content
-        run: ls
+        run: pwd && ls
       - name: Deploy Code
         run: echo "Deploying..."
