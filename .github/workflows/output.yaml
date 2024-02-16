@@ -1,8 +1,21 @@
-name: Output GitHub Context
-on: workflow_dispatch
+name: Outputs Demo
+on:
+  workflow_dispatch:
 jobs:
-  Output:
+  job1:
+    outputs:
+      output1: ${{ steps.step1.outputs.output1 }}
+      output2: ${{ steps.step2.outputs.output2 }}
     runs-on: ubuntu-latest
     steps:
-      - name: Output GitHub Context
-        run: echo "${{ toJson(github) }}"
+      - name: Step 1
+        id: step1
+        run: echo "::set-output name=output1::hello"
+      - name: Step 2
+        id: step2
+        run: cho "::set-output name=output2::world"
+  job2:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Output first output
+        run: echo "${{ needs.job1.outputs.output1 }} ${{ needs.job1.outputs.output2 }}"
