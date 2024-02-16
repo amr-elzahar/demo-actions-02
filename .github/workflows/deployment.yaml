@@ -14,6 +14,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+      - name: Caching Dependecies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: "${{runner.os}}-cache-${{hashFiles('**/pckage.lock.json')}}"
       - name: Install Dependencies
         run: npm install
       - name: Run Test
@@ -28,6 +33,11 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 18
+      - name: Caching Dependecies
+        uses: actions/cache@v4
+        with:
+          path: ~/.npm
+          key: "${{runner.os}}-cache-${{hashFiles('**/pckage.lock.json')}}"
       - name: Install Dependencies
         run: npm install
       - name: Run Build
