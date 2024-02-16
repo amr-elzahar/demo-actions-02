@@ -15,6 +15,7 @@ jobs:
         id: step2
         run: cho "::set-output name=output2::world"
   job2:
+    needs: job1
     runs-on: ubuntu-latest
     steps:
       - name: Output first output
