@@ -1,0 +1,11 @@
+name: Exporing Outcome and Conclusion
+on: workflow_dispatch
+jobs:
+  Explore:
+    runs-on: ubuntu-latest
+    steps:
+      - name: step1
+        id: step-one
+        run: echo "Hi"
+      - name: step2
+        run: echo "${{steps.step-one.outcome}}" && echo ""${{steps.step-one.conclusion}}
