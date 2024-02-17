@@ -10,4 +10,4 @@ jobs:
 
       - name: Output hello world
         run: echo "Hello world!"
-        if: failure() && ${{ steps.output-info.outcome == 'failure' }}
+        if: ${{ failure() && steps.output-info.outcome == 'failure' }}
