@@ -20,7 +20,7 @@ jobs:
     needs: Testing
     runs-on: ubuntu-latest
     steps:
-      - name: get, setup node, cache deps
+      - name: setup node, cache deps
         uses: ./.github/actions/cached-deps
         with:
           caching: "true"

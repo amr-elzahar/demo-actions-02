@@ -3,7 +3,7 @@ description: Checking out the code and then cache it
 inputs:
   caching:
     description: Whether to cache deps
-    required: true
+    required: false
     default: "true"
 runs:
   using: "composite"
