@@ -1,0 +1,43 @@
+name: Enahanced Deployment Workflow
+on:
+  # push:
+  #   branches:
+  #     - main
+  workflow_dispatch:
+jobs:
+  Testing:
+    runs-on: ubuntu-latest
+    steps:
+      - name: get, setup node, cache deps
+        uses: .github/actions/cashed-deps/action.yaml
+        with:
+          caching: "true"
+      - name: Run Test
+        run: npm test
+  Building:
+    needs: Testing
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: .github/actions/cashed-deps/action.yaml
+        with:
+          caching: "true"
+      - name: Run Build
+        run: npm run build
+      - name: Upload Artificat
+        uses: actions/upload-artifact@v4
+        with:
+          name: dist-files
+          path: dist
+  Deploying:
+    needs: Building
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download Artifact
+        uses: actions/download-artifact@v4
+        with:
+          name: dist-files
+      - name: Output Artifact Content
+        run: pwd && ls
+      - name: Deploy Code
+        run: echo "Deploying..."

@@ -1,0 +1,27 @@
+name: Get and Cache Dependencies
+description: Checking out the code and then cache it
+inputs:
+  caching:
+    description: Whether to cache deps
+    required: true
+    default: "true"
+runs:
+  using: "composite"
+  steps:
+    - name: checkout code
+      uses: actions/checkout@v4
+    - name: Install Node JS
+      uses: actions/setup-node@v4
+      with:
+        node-version: 18
+    - name: cache deps
+      id: cache
+      uses: actions/cache@v4
+      with:
+        path: ./npm
+        key: "${{runner.os}}-cache-${{hashFiles('**/pckage.lock.json')}}"
+      if: inputs.caching = 'true'
+    - name: Install deps
+      run: npm install
+      if: ${{ steps.cache.outputs.cache-hit != 'true' }}
+      shell: bash

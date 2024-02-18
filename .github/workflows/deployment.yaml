@@ -10,10 +10,10 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Install Node JS
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+      # - name: Install Node JS
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 18
       - name: Caching Dependecies
         uses: actions/cache@v4
         with:
@@ -29,10 +29,10 @@ jobs:
     steps:
       - name: Checkout Code
         uses: actions/checkout@v4
-      - name: Install Node JS
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18
+      # - name: Install Node JS
+      #   uses: actions/setup-node@v4
+      #   with:
+      #     node-version: 18
       - name: Caching Dependecies
         uses: actions/cache@v4
         with:
