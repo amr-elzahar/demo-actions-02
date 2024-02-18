@@ -11,7 +11,7 @@ jobs:
       - name: checkout code
         uses: actions/checkout@v4
       - name: setup node, cache deps
-        uses: .github/actions/cached-deps
+        uses: /.github/actions/cached-deps
         with:
           caching: "true"
       - name: Run Test
@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: setup node, cache deps
-        uses: .github/actions/cached-deps
+        uses: /.github/actions/cached-deps
         with:
           caching: "true"
       - name: Run Build
