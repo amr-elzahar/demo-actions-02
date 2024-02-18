@@ -9,7 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: get, setup node, cache deps
-        uses: .github/actions/cashed-deps/action.yaml
+        uses: ./.github/actions/cached-deps
         with:
           caching: "true"
       - name: Run Test
@@ -18,8 +18,8 @@ jobs:
     needs: Testing
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: .github/actions/cashed-deps/action.yaml
+      - name: get, setup node, cache deps
+        uses: ./.github/actions/cached-deps
         with:
           caching: "true"
       - name: Run Build
