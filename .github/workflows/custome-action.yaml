@@ -8,7 +8,9 @@ jobs:
   Testing:
     runs-on: ubuntu-latest
     steps:
-      - name: get, setup node, cache deps
+      - name: checkout code
+        uses: actions/checkout@v4
+      - name: setup node, cache deps
         uses: ./.github/actions/cached-deps
         with:
           caching: "true"
