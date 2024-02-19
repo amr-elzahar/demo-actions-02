@@ -18,7 +18,7 @@ runs:
       with:
         path: ./npm
         key: "${{runner.os}}-cache-${{hashFiles('**/pckage.lock.json')}}"
-      if: inputs.caching = 'true'
+      if: inputs.caching == 'true' # Changed '=' to '=='
     - name: Install deps
       run: npm install
       if: ${{ steps.cache.outputs.cache-hit != 'true' }}
